@@ -1,0 +1,284 @@
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body { font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+
+.hero{
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background: #fbfaf7;
+}
+
+/* Video fills the screen */
+.bgVideo{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* fills screen */
+  object-position: center bottom;  /* adjust if needed (e.g. center bottom) */
+  transform: scale(1.02);
+}
+
+/* Soft shade so text pops */
+.shade{
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.15), rgba(255,255,255,0.45));
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Centered text */
+.overlay{
+  position: relative;
+  z-index: 3;
+  height: 100%;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  padding: 48px;
+  color: #111;
+}
+
+h1{
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+  font-size: clamp(44px, 6vw, 86px);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+p{
+  margin: 18px 0 0;
+  font-size: clamp(16px, 2vw, 20px);
+  opacity: 0.85;
+}
+
+/* Classier button */
+.enter{
+  margin: 28px auto 0;
+  padding: 12px 26px;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  background: rgba(255,255,255,0.65);
+  border: 1px solid rgba(0,0,0,0.35);
+  border-radius: 999px;
+
+  cursor: pointer;
+  transition: transform 180ms ease, background 180ms ease, border-color 180ms ease, opacity 180ms ease;
+}
+
+.enter:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,0.85);
+  border-color: rgba(0,0,0,0.55);
+}
+
+/* Sound toggle (top-right) */
+.soundToggle{
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 4;
+
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.28);
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(6px);
+
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  cursor: pointer;
+  opacity: 1;
+}
+/* =========================
+   DETAILS PAGES THEME
+   ========================= */
+
+.detailsPage {
+  min-height: 100vh;
+  background: #fbfaf7;
+  color: #111;
+}
+
+/* subtle theme background using your illustration (optional but pretty) */
+.detailsPage::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  background: url("./assets/welcomepage.jpg") center / contain no-repeat;
+  opacity: 0.16;
+  pointer-events: none;
+  transform: translateY(20px);
+}
+
+/* Header + Nav */
+.siteHeader{
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  padding: 18px 26px;
+  background: rgba(251, 250, 247, 0.70);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.brand{
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #111;
+  text-decoration: none;
+}
+
+.nav{
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.navLink{
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+
+  color: rgba(0,0,0,0.75);
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 999px;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.navLink:hover{
+  background: rgba(0,0,0,0.05);
+  color: rgba(0,0,0,0.95);
+  transform: translateY(-1px);
+}
+
+.navLink.isActive{
+  background: rgba(0,0,0,0.08);
+  color: rgba(0,0,0,0.95);
+}
+
+/* Page layout */
+.pageWrap{
+  position: relative;
+  z-index: 2; /* above the faint background */
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 44px 22px 80px;
+}
+
+.card{
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0,0,0,0.10);
+  border-radius: 18px;
+  padding: 34px 28px;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.06);
+}
+
+.pageTitle{
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+  font-size: clamp(34px, 4vw, 56px);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pageSub{
+  margin: 12px 0 0;
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  opacity: 0.85;
+}
+
+.detailsGrid{
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.detailItem{
+  border: 1px solid rgba(0,0,0,0.10);
+  background: rgba(255,255,255,0.55);
+  border-radius: 14px;
+  padding: 14px 14px;
+}
+
+.detailLabel{
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.70;
+}
+
+.detailValue{
+  margin-top: 8px;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+}
+
+/* CTAs */
+.ctaRow{
+  margin-top: 22px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cta{
+  display: inline-block;
+  padding: 12px 18px;
+  border-radius: 999px;
+
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  background: rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.18);
+  color: #111;
+  text-decoration: none;
+
+  transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+
+.cta:hover{
+  transform: translateY(-1px);
+  background: rgba(0,0,0,0.10);
+  border-color: rgba(0,0,0,0.25);
+}
+
+.ctaGhost{
+  background: rgba(255,255,255,0.55);
+}
+
+@media (max-width: 720px){
+  .detailsGrid{ grid-template-columns: 1fr; }
+  .nav{ gap: 8px; }
+  .navLink{ padding: 10px 10px; }
+}

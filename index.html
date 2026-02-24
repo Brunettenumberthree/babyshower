@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ximena and Eli Baby Shower</title>
+
+  <!-- Fonts (optional but classy) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <main class="hero">
+
+    <!-- Background video -->
+    <video
+      class="bgVideo"
+      id="bgVideo"
+      autoplay
+      loop
+      playsinline
+      preload="auto"
+      muted
+      poster="./assets/welcomepage.jpg"
+    >
+      <source src="./assets/welcomevideo.mp4" type="video/mp4" />
+    </video>
+
+    <!-- Optional: subtle overlay to improve text readability -->
+    <div class="shade" aria-hidden="true"></div>
+
+    <!-- Sound toggle (shown only if user wants sound) -->
+    <button class="soundToggle" id="soundToggle" type="button">
+      Sound On
+    </button>
+
+    <!-- Your content -->
+    <div class="overlay">
+      <h1>Welcome</h1>
+      <p>Join us to celebrate Ximena &amp; Eli’s little one</p>
+      <button class="enter" type="button">Enter</button>
+    </div>
+
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
