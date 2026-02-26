@@ -24,6 +24,63 @@
       <a class="navLink" href="photos.html">Photos</a>
     </nav>
   </header>
+  <section class="card">
+  <h1 class="pageTitle">RSVP</h1>
+  <p class="pageSub">Scroll down to fill out RSVP form. Please RSVP by 'date here'.</p>
+
+  <!-- Invitation image -->
+  <figure class="inviteWrap">
+    <img
+    class="inviteImage"
+      src="./assets/invitation.jpg"
+      alt="Baby shower invitation"
+      loading="lazy"
+    />
+  </figure>
+ 
+  </div>
+  <form class="rsvpForm" action="https://formspree.io/f/xnjbwdbr" method="POST">
+  <div class="formGrid">
+
+    <label class="field">
+      <span class="labelText">Full Name</span>
+      <input name="name" type="text" required />
+    </label>
+
+    <label class="field">
+      <span class="labelText">Email</span>
+      <input name="email" type="email" required />
+    </label>
+
+    <label class="field fieldWide">
+      <span class="labelText">Attendance</span>
+      <select name="attendance" required>
+        <option value="" selected disabled>Select</option>
+        <option value="Yes">Yes, I’ll be there</option>
+        <option value="No">No, I can’t make it</option>
+      </select>
+    </label>
+
+    <label class="field fieldWide">
+      <span class="labelText">Dietary Restrictions (optional)</span>
+      <input name="dietary" type="text" placeholder="Vegetarian, gluten-free, allergies, etc." />
+    </label>
+
+    <label class="field fieldWide">
+      <span class="labelText">Message (optional)</span>
+      <textarea name="message" rows="4" placeholder="Any notes for the hosts"></textarea>
+    </label>
+
+    <!-- Optional: email subject line -->
+    <input type="hidden" name="_subject" value="New Baby Shower RSVP" />
+
+  </div>
+
+  <button class="cta" type="submit">Submit RSVP</button>
+
+  <p class="formNote">After submitting, you’ll see a confirmation message.</p>
+</form>
+</section>
 
   <main class="pageWrap">
  

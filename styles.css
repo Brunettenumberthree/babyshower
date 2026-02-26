@@ -240,7 +240,65 @@ p{
   font-size: 15px;
   letter-spacing: 0.02em;
 }
+/* RSVP invitation image */
+.inviteWrap{
+  margin: 22px 0 10px;
+  display: grid;
+  place-items: center;
+}
 
+.inviteImage{
+  width: min(450px, 100%);
+  height: auto;
+  border-radius: 16px;
+  border: 1px solid rgba(0,0,0,0.5);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.08);
+}
+/* RSVP form */
+.rsvpForm { margin-top: 22px; }
+
+.formGrid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.field { display: grid; gap: 8px; }
+.fieldWide { grid-column: 1 / -1; }
+
+.labelText{
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.70;
+}
+
+input, select, textarea{
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.12);
+  background: rgba(255,255,255,0.70);
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 14px;
+  outline: none;
+}
+
+input:focus, select:focus, textarea:focus{
+  border-color: rgba(0,0,0,0.28);
+}
+
+.formNote{
+  margin-top: 12px;
+  font-size: 13px;
+  opacity: 0.75;
+}
+
+@media (max-width: 720px){
+  .formGrid{ grid-template-columns: 1fr; }
+}
 /* CTAs */
 .ctaRow{
   margin-top: 22px;
