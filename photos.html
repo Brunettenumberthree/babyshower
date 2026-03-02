@@ -4,18 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Photos</title>
+  <link rel="shortcut icon" href="assets/favicon.jpg">
   <!-- Same fonts as landing -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link rel="stylesheet" href="./styles.css" />
 </head>
 
 <body class="detailsPage">
   <!-- Elegant nav -->
   <header class="siteHeader">
-    <a class="brand" href="photos.html">Photos</a>
+    <a class="brand" href="details.html">Baby Shower</a>
 
     <nav class="nav">
       <a class="navLink" href="details.html">Home</a>
@@ -26,9 +27,32 @@
   </header>
 
   <main class="pageWrap">
- 
+    <section class="card">
+      <h1 class="pageTitle">Share Your Photos</h1>
+      <p class="pageSub">Upload your favorite moments — the gallery updates automatically.</p>
+
+      <div class="ctaRow" style="margin-top:14px;">
+        <a class="cta uploadButton"
+           href="https://www.dropbox.com/request/2cjRe1BvfiUhLKRfi0Uc"
+           target="_blank"
+           rel="noopener">
+          Upload Photos
+        </a>
       </div>
+
+      <!-- Carousel -->
+      <div class="swiper photoSwiper" style="margin-top:18px;">
+        <div class="swiper-wrapper" id="photoSlides"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+
+      <p class="pageSub" id="galleryStatus" style="margin-top:12px;">
+        Loading latest photos…
+      </p>
     </section>
   </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="./photos.js"></script>
 </body>
 </html>

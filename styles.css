@@ -41,7 +41,8 @@ body { font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, 
   color: #111;
 }
 
-h1{
+/* Landing page ONLY heading (prevents affecting details pages) */
+.hero h1{
   font-family: "Playfair Display", serif;
   font-weight: 400;
   font-size: clamp(44px, 6vw, 86px);
@@ -115,11 +116,19 @@ p{
   position: fixed;
   inset: 0;
   background: url("./assets/welcomepage.jpg") center / contain no-repeat;
-  opacity: 0.16;
+  opacity: 0.10;
   pointer-events: none;
   transform: translateY(20px);
-}
 
+  z-index: -1;        /* ✅ FORCE it behind everything */
+}
+.detailsPage{
+   min-height: 100vh;
+  background: #fbfaf7;
+  color: #111;
+  position: relative;
+  z-index: 0;
+}
 /* Header + Nav */
 .siteHeader{
   position: sticky;
@@ -179,15 +188,15 @@ p{
 /* Page layout */
 .pageWrap{
   position: relative;
-  z-index: 2; /* above the faint background */
+  z-index: 1; /* above background overlay */
   max-width: 980px;
   margin: 0 auto;
   padding: 44px 22px 80px;
 }
 
 .card{
-  background: rgba(255,255,255,0.72);
-  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.94);  /* MORE SOLID */
+  backdrop-filter: none;               /* REMOVE blur (this causes wash) */
   border: 1px solid rgba(0,0,0,0.10);
   border-radius: 18px;
   padding: 34px 28px;
@@ -240,6 +249,12 @@ p{
   font-size: 15px;
   letter-spacing: 0.02em;
 }
+
+.detailsHeroImage img:hover{
+  transform: scale(1.02);
+  box-shadow: 0 28px 80px rgba(0,0,0,0.18);
+}
+
 /* RSVP invitation image */
 .inviteWrap{
   margin: 22px 0 10px;
@@ -335,8 +350,155 @@ input:focus, select:focus, textarea:focus{
   background: rgba(255,255,255,0.55);
 }
 
+.uploadButton{
+  font-size: 14px;
+  padding: 16px 34px;
+  letter-spacing: 0.22em;
+}
+
 @media (max-width: 720px){
   .detailsGrid{ grid-template-columns: 1fr; }
   .nav{ gap: 8px; }
   .navLink{ padding: 10px 10px; }
+}
+/* ===== Live Photo Carousel ===== */
+.photoSwiper{
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.10);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.65);
+}
+
+.photoSwiper .swiper-slide{
+  display: grid;
+  place-items: center;
+}
+
+.photoSwiper img{
+  width: 100%;
+  height: min(70vh, 560px);
+  object-fit: cover;
+  display: block;
+}
+
+/* nicer pagination dots */
+.photoSwiper .swiper-pagination-bullet{
+  background: rgba(0,0,0,0.30);
+  opacity: 1;
+}
+.photoSwiper .swiper-pagination-bullet-active{
+  background: rgba(0,0,0,0.65);
+}
+/* ===== Details Intro (Centered photo + text underneath) ===== */
+.detailsIntro{
+  text-align: center;
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+/* Solid frame so background never shows “through” */
+.introPhotoFrame{
+  width: min(650px, 100%);
+  background: #fff;
+  border-radius: 18px;
+  padding: 12px;
+  border: 1px solid rgba(0,0,0,0.10);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.08);
+}
+
+/* Show FULL photo (no crop) */
+.introPhoto{
+  width: 100%;
+  height: auto;              /* ✅ key for full photo */
+  max-height: 70vh;          /* prevents it from being huge */
+  object-fit: contain;       /* ✅ shows full image */
+  display: block;
+  border-radius: 14px;
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+.introPhoto:hover{
+  transform: scale(1.02);
+  box-shadow: 0 28px 80px rgba(0,0,0,0.18);
+}
+
+/* Smaller, cleaner typography */
+.detailsTitle{
+  margin: 10px 0 0;
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+  font-size: clamp(26px, 3.2vw, 40px);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.18;
+}
+
+.detailsSub{
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  letter-spacing: 0.03em;
+  opacity: 0.85;
+}
+
+.detailsMeta{
+  margin: 6px 0 0;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+/* ===== Registry Page Layout Refinement ===== */
+
+.registryCard{
+  text-align: center;
+}
+
+/* tighten spacing */
+.registryCard .pageTitle{
+  margin-bottom: 8px;
+}
+
+.registryCard .pageSub{
+  max-width: 520px;
+  margin: 0 auto 20px;
+}
+
+/* smaller, more refined image */
+.registryHero{
+  margin: 18px 0 22px;
+  display: grid;
+  justify-items: center;
+}
+
+.registryImageFrame{
+  width: min(480px, 85%);   /* ⬅ smaller */
+  padding: 14px;
+  border-radius: 18px;
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.07);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.registryImageFrame:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 26px 65px rgba(0,0,0,0.12);
+}
+
+.registryImageFrame img{
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+}
+
+/* center button */
+.registryCard .ctaRow{
+  justify-content: center;
 }
